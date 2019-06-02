@@ -1,9 +1,9 @@
 import { TweenMax, Bounce, TimelineMax, Elastic } from "gsap";
-import { id, shuffle } from "../utils";
+import { id, shuffle, hidden, visible } from "../utils";
 
 type Player = "black" | "white";
 
-export function Play() {
+export function Play(onComplete: () => void) {
   const whitePieces = Array.from(id("white-pieces").children);
   const blackPieces = Array.from(id("black-pieces").children);
   const whitePawn = id("white-pawn-1");
@@ -16,7 +16,7 @@ export function Play() {
   animateAll();
 
   function animateAll() {
-    const tl = new TimelineMax();
+    const tl = new TimelineMax({ onComplete });
     tl.add(enterPieces(blackPieces), 0);
     tl.add(fadeInCounter(), 0.1);
     tl.add(enterPieces(whitePieces), 0.2);
@@ -39,7 +39,7 @@ export function Play() {
   }
 
   function fadeInCounter() {
-    return TweenMax.fromTo(counter, 0.5, { opacity: 0 }, { opacity: 1 });
+    return TweenMax.fromTo(counter, 0.5, hidden, visible);
   }
 
   function movePiece(piece: Node, player: Player, distance: number) {
@@ -61,10 +61,10 @@ export function Play() {
 
   function fadeAllPieces() {
     const shuffled = shuffle(whitePieces.concat(blackPieces));
-    return TweenMax.staggerTo(shuffled, 0.25, { opacity: 0 }, 0.03);
+    return TweenMax.staggerTo(shuffled, 0.25, hidden, 0.03);
   }
 
   function fadeOutCounter() {
-    return TweenMax.to(counter, 0.5, { opacity: 0 });
+    return TweenMax.to(counter, 0.5, hidden);
   }
 }
