@@ -1,0 +1,28 @@
+{
+  "name": "thank-you-card",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "parcel build src/index.html",
+    "dev": "parcel src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewMacmurray/thank-you-card.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewMacmurray/thank-you-card/issues"
+  },
+  "homepage": "https://github.com/andrewMacmurray/thank-you-card#readme",
+  "devDependencies": {
+    "@types/gsap": "^1.20.2",
+    "parcel-bundler": "^1.12.3",
+    "typescript": "^3.5.1"
+  },
+  "dependencies": {
+    "gsap": "^2.1.3"
+  }
+}
