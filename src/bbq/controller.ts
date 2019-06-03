@@ -1,5 +1,5 @@
 import * as Animation from './animation'
-import View from './view'
+import View from './view.html'
 
 export function Init(sceneContainer: Element, onComplete: () => void) {
   appendView()
