@@ -30,9 +30,8 @@ export function Play(): Promise<{}> {
 
   return new Promise(animateAll);
 
-  function animateAll(onComplete) {
+  function animateAll(onComplete: (_: PromiseLike<{}>) => void) {
     const tl = new TimelineMax({ onComplete });
-
     tl.add(fallLogs());
     tl.add(fallPinecones(), 0.8);
     tl.add(riseSmoke());

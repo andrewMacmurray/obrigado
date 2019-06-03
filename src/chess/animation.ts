@@ -15,15 +15,18 @@ export function Play(): Promise<{}> {
 
   return new Promise(resolve => animateAll(resolve));
 
-  function animateAll(onComplete) {
+  function animateAll(onComplete: (_: PromiseLike<{}>) => void) {
+
     const tl = new TimelineMax({ onComplete });
+
+    counter.addEventListener('click', () => tl.pause())
     tl.add(enterPieces(blackPieces), 0);
     tl.add(fadeInCounter(), 0.1);
     tl.add(enterPieces(whitePieces), 0.2);
     tl.add(movePiece(whitePawn, "white", -150), 1.1);
     tl.add(movePiece(blackPawn, "black", 150));
     tl.add(movePiece(whiteBishop, "white", -420));
-    tl.add(movePiece(blackQueen, "black", 230));
+    tl.add(movePiece(blackQueen, "black", 240));
     tl.add(fadeAllPieces(), "+=0.5");
     tl.add(fadeOutCounter(), "-=0.4");
   }
