@@ -1,7 +1,7 @@
 import { TweenMax, Bounce, TimelineMax, Power2, Elastic } from "gsap";
 import { id, hidden, visible, shuffle } from "../utils";
 
-export function Play(onComplete: () => void) {
+export function Play(): Promise<{}> {
   const fire = id("fire");
 
   const pinecones = [
@@ -28,9 +28,9 @@ export function Play(onComplete: () => void) {
 
   const fish = ["fish-1", "fish-2", "fish-3"].map(id);
 
-  animateAll();
+  return new Promise(animateAll);
 
-  function animateAll() {
+  function animateAll(onComplete) {
     const tl = new TimelineMax({ onComplete });
 
     tl.add(fallLogs());

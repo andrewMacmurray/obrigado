@@ -1,7 +1,7 @@
 import { TweenMax, RoughEase, TimelineMax } from "gsap";
 import { id, hidden, visible } from "../utils";
 
-export function Play(onComplete: () => void) {
+export function Play(): Promise<{}> {
   const red = id("red-joycon");
   const blue = id("blue-joycon");
   const cartman = id("cartman");
@@ -10,9 +10,9 @@ export function Play(onComplete: () => void) {
   const screen = id("screen");
   const tv = id("tv");
 
-  animteAll();
+  return new Promise(animateAll);
 
-  function animteAll() {
+  function animateAll(onComplete) {
     const tl = new TimelineMax({ onComplete });
     flickerScreen();
     tl.add(fadeInScene());

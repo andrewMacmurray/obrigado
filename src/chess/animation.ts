@@ -3,7 +3,7 @@ import { id, shuffle, hidden, visible } from "../utils";
 
 type Player = "black" | "white";
 
-export function Play(onComplete: () => void) {
+export function Play(): Promise<{}> {
   const whitePieces = Array.from(id("white-pieces").children);
   const blackPieces = Array.from(id("black-pieces").children);
   const whitePawn = id("white-pawn-1");
@@ -13,9 +13,9 @@ export function Play(onComplete: () => void) {
   const handle = id("handle");
   const counter = id("counter");
 
-  animateAll();
+  return new Promise(resolve => animateAll(resolve));
 
-  function animateAll() {
+  function animateAll(onComplete) {
     const tl = new TimelineMax({ onComplete });
     tl.add(enterPieces(blackPieces), 0);
     tl.add(fadeInCounter(), 0.1);

@@ -1,11 +1,9 @@
-import * as Chess from "./chess/controller";
-import * as Switch from "./switch/controller";
-import * as Bbq from "./bbq/controller";
+import * as Chess from "./chess/chess";
+import * as Switch from "./switch/switch";
+import * as Bbq from "./bbq/bbq";
 
-const sceneContainer = document.getElementById("scene");
+const scene = document.getElementById("scene");
 
-Bbq.Init(sceneContainer, () =>
-  Chess.Init(sceneContainer, () =>
-    Switch.Init(sceneContainer, () => console.log("done"))
-  )
-);
+Bbq.run(scene)
+  .then(() => Chess.run(scene))
+  .then(() => Switch.run(scene));
