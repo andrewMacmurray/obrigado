@@ -5,8 +5,6 @@ import * as Message from './message/message'
 
 const scene = document.getElementById("scene");
 
-// Chess.run(scene)
-
 Bbq.run(scene)
   .then(() => Chess.run(scene))
   .then(() => Switch.run(scene))
