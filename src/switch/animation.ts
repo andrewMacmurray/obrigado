@@ -15,7 +15,6 @@ export function Play(): Promise<{}> {
   function animateAll(onComplete: (_: PromiseLike<{}>) => void) {
     const tl = new TimelineMax({ onComplete });
 
-    tv.addEventListener('click', () => tl.pause())
     flickerScreen();
     tl.add(fadeInScene());
     tl.add(playGame().duration(4));

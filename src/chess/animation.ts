@@ -16,10 +16,8 @@ export function Play(): Promise<{}> {
   return new Promise(resolve => animateAll(resolve));
 
   function animateAll(onComplete: (_: PromiseLike<{}>) => void) {
-
     const tl = new TimelineMax({ onComplete });
 
-    counter.addEventListener('click', () => tl.pause())
     tl.add(enterPieces(blackPieces), 0);
     tl.add(fadeInCounter(), 0.1);
     tl.add(enterPieces(whitePieces), 0.2);
